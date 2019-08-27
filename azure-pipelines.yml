@@ -6,6 +6,9 @@ trigger:
     include:
     - '*'
 
+variables:
+- group: Container Journey
+
 pool:
   vmImage: 'ubuntu-latest'
 
