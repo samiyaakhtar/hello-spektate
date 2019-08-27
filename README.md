@@ -1,2 +1,2 @@
 # hello-spektate
-Source repo for a hello world for project Spektate https://github.com/microsoft/spektate
+Source repository for a test application for [Spektate](https://github.com/microsoft/spektate)
