@@ -46,7 +46,7 @@ steps:
     tag_name="hello-spektate-$(Build.SourceBranchName)-$(Build.BuildId)"
     commitId=$(Build.SourceVersion)
     commitId=$(echo "${commitId:0:7}")
-    all_data="{\"account_key\": \"$(ACCOUNT_KEY)\", \"account_name\": \"$(ACCOUNT_NAME)\", \"table_name\": \"$(TABLE_NAME)\", \"partition_key\": \"$(PARTITION_KEY)\", \"filter_name\": \"p1\", \"filter_value\": \"$(Build.BuildId)\", \"name1\": \"imageTag\", \"value1\": \"$tag_name\", \"name2\": \"commitId\", \"value2\": \"$commitId\", \"name3\": \"service\", \"value3\": \"Build.Repository.Name\" }"
+    all_data="{\"account_key\": \"$(ACCOUNT_KEY)\", \"account_name\": \"$(ACCOUNT_NAME)\", \"table_name\": \"$(TABLE_NAME)\", \"partition_key\": \"$(PARTITION_KEY)\", \"filter_name\": \"p1\", \"filter_value\": \"$(Build.BuildId)\", \"name1\": \"imageTag\", \"value1\": \"$tag_name\", \"name2\": \"commitId\", \"value2\": \"$commitId\", \"name3\": \"service\", \"value3\": \"$(Build.Repository.Name)\" }"
     echo $all_data
     echo "curl https://spektateprototypefunc.azurewebsites.net/api/UpdatePipelineStorage  --request POST  --header \"Content-type: application/json\"  --data $all_data"
     curl https://spektateprototypefunc.azurewebsites.net/api/UpdatePipelineStorage  --request POST  --header "Content-type: application/json"  --data "$all_data"
