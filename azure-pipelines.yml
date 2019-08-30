@@ -43,7 +43,7 @@ steps:
 #   displayName: Update source pipeline details in CJ db
 
 - bash: |
-    tag_name="hello-spektate/$(Build.SourceBranchName)-$(Build.BuildId)"
+    tag_name="hello-spektate-$(Build.SourceBranchName)-$(Build.BuildId)"
     commitId=$(Build.SourceVersion)
     commitId=$(echo "${commitId:0:7}")
     all_data="{\"account_key\": \"$(ACCOUNT_KEY)\", \"account_name\": \"$(ACCOUNT_NAME)\", \"table_name\": \"$(TABLE_NAME)\", \"partition_key\": \"$(PARTITION_KEY)\", \"filter_name\": \"p1\", \"filter_value\": \"$(Build.BuildId)\", \"name1\": \"imageTag\", \"value1\": \"$tag_name\", \"name2\": \"commitId\", \"value2\": \"$commitId\", \"name3\": \"service\", \"value3\": \"$(Build.Repository.Name)\" }"
@@ -58,5 +58,5 @@ steps:
     repository: 'hellospektate'
     command: 'buildAndPush'
     Dockerfile: '**/src/Dockerfile'
-    tags: 'hello-spektate/$(Build.SourceBranchName)-$(Build.BuildId)'
+    tags: 'hello-spektate-$(Build.SourceBranchName)-$(Build.BuildId)'
   condition: ne(variables['Build.Reason'], 'PullRequest')
