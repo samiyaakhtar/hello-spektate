@@ -8,6 +8,7 @@ trigger:
 
 variables:
 - group: Container Journey
+- group: kvgroup
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -18,6 +19,8 @@ steps:
   clean: true
 
 - bash: |
+    echo "secret1 = $(secret1)"
+    echo "secret2 = $(secret2)"
     echo "SourceBranchName = $(Build.SourceBranchName)"
     echo "SourceBranch = $(Build.SourceBranch)"
     branch_name_extracted=$(echo "${SourceBranch/refs\/head\// }")
