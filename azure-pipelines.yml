@@ -8,7 +8,6 @@ trigger:
 
 variables:
 - group: Container Journey
-- group: kvgroup
 
 pool:
   vmImage: 'ubuntu-latest'
