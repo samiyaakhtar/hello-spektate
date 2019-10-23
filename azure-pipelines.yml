@@ -30,7 +30,8 @@ steps:
     echo $VERSION_TO_DOWNLOAD
     echo "https://github.com/CatalystCode/spk/releases/download/v0.1.0/spk-linux"
     wget "https://github.com/CatalystCode/spk/releases/download/v0.1.0/spk-linux"
-    export PATH=$PATH:$(pwd)
+    # export PATH=$PATH:$(pwd)
+    chmod +x ./spk-linux
     ./spk-linux -h
   displayName: testing
   
