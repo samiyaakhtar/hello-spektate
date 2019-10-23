@@ -24,6 +24,14 @@ steps:
     echo "SourceBranch = $(Build.SourceBranch)"
     branch_name_extracted=$(echo "${SourceBranch/refs\/head\// }")
   displayName: Extract branch name
+
+- bash: |
+    VERSION_TO_DOWNLOAD=$(curl -s "https://api.github.com/repos/catalystcode/spk/releases/latest" | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/')
+    echo $VERSION_TO_DOWNLOAD
+    echo "https://github.com/catalystcode/spk/releases/download/$VERSION_TO_DOWNLOAD/spk-linux"
+    wget "https://github.com/catalystcode/spk/releases/download/$VERSION_TO_DOWNLOAD/spk-linux"
+    export PATH=$PATH:$(pwd)
+  displayName: testing
   
 # - bash: |
 #     git clone https://github.com/samiyaakhtar/container-journey.git
