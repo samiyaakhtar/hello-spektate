@@ -12,6 +12,7 @@ schedules:
   branches:
     include:
     - master
+  always: true
 
 variables:
 - group: Container Journey
